@@ -7,3 +7,12 @@ text-align: center;
 h1 {
 text-align: center;
 }
+
+#timer{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: peachpuff;
+    color: black;
+    font-size: medium;
+    text-shadow: .2px .2px black;
+    text-align: center;
+}

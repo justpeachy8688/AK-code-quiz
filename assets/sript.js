@@ -6,7 +6,22 @@ function onStartQuizClick() {
     scoreSubmission.classList.remove("d-none")
 }
 
+var quizTimer = document.getElementById("timer")
+var timeLeft = 76;
+var timerInterval;
 document.getElementById("start-button").addEventListener("click", onStartQuizClick)
+
+//Timer
+timerInterval = setInterval(function () {
+    timeLeft--;
+    quizTimer.textContent = "Time left: " + timeLeft;
+
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        showScore();
+    }
+}, 1000);
+quizBody.style.display = "block";
 
 
 //Quiz Questions
