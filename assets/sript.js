@@ -1,15 +1,17 @@
 var startScreen = document.getElementById("start-screen")
 var scoreSubmission = document.getElementById("score-submission")
+var quizTimer = document.getElementById("timer")
+var timeLeft = 76;
+var timerInterval;
+document.getElementById("start-button").addEventListener("click", onStartQuizClick)
+var questionsEl = document.getElementById("questions");
+var quizBody = document.getElementById("quiz");
 
 function onStartQuizClick() {
     startScreen.classList.add("d-none")
     scoreSubmission.classList.remove("d-none")
 }
 
-var quizTimer = document.getElementById("timer")
-var timeLeft = 76;
-var timerInterval;
-document.getElementById("start-button").addEventListener("click", onStartQuizClick)
 
 //Timer
 timerInterval = setInterval(function () {
