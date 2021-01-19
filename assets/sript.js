@@ -6,25 +6,20 @@ var timerInterval;
 document.getElementById("start-button").addEventListener("click", onStartQuizClick)
 var questionsEl = document.getElementById("questions");
 var quizBody = document.getElementById("quiz");
+var gameoverDiv = document.getElementById("gameover");
+var startQuizDiv = document.getElementById("start-screen");
+var buttonA = document.getElementById("a");
+var buttonB = document.getElementById("b");
+var buttonC = document.getElementById("c");
+var buttonD = document.getElementById("d");
+
 
 function onStartQuizClick() {
     startScreen.classList.add("d-none")
     scoreSubmission.classList.remove("d-none")
+    gameoverDiv.style.display = "none";
+    generateQuizQuestion();
 }
-
-
-//Timer
-timerInterval = setInterval(function () {
-    timeLeft--;
-    quizTimer.textContent = "Time left: " + timeLeft;
-
-    if (timeLeft === 0) {
-        clearInterval(timerInterval);
-        showScore();
-    }
-}, 1000);
-quizBody.style.display = "block";
-
 
 //Quiz Questions
 var quizQuestions = [{
@@ -84,6 +79,20 @@ var quizQuestions = [{
     correctAnswer: "B"
 },
 ];
+
+
+//Timer
+timerInterval = setInterval(function () {
+    timeLeft--;
+    quizTimer.textContent = "Time left: " + timeLeft;
+
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        showScore();
+    }
+}, 1000);
+quizBody.style.display = "block";
+
 //In 1867, what was the cost (per acre) that the United States purchased Alaska for?
 //What is the tallest peak in Alaska?
 //What is Alaska's capitol city that is only accessible by boat or plane?
