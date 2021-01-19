@@ -1,4 +1,4 @@
-# AK-code-quiz
+# AK-quiz
 
 ## Description
 
