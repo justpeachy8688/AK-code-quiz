@@ -10,103 +10,58 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body>
-    <div class="container d-flex justify-content-center mt-5"></div>
+<body></body>
 
-    <div class="container justify-content-center mt-5">
-        <div id="start-screen" class="start">
-            <div class="row pb-4">
-                <div class="col-lg-4">
-                    <h1 class="code-title">Alaska Quiz Challenge</h1>
-                </div>
+<div class="container justify-content-center mt-5">
+    <div id="start-screen" class="start">
+        <div class="row pb-4">
+            <div class="col-lg-12">
+                <h1 class="code-title">Alaska Quiz Challenge</h1>
             </div>
             <h4>Let's see what you know about my beautiful home - Alaska! Here are some multiple choice
                 questions.
                 Answer them all as quickly as you can. You can try as many times as you want!
             </h4>
-            <button id="start-button">Start Quiz</button>
-            <button id="startPageHighscore" onclick="showHighscore()">High Scores</button>
+        </div>
+        <button id="start-button">Start Quiz</button>
+        <button id="startPageHighscore" onclick="showHighscore()">High Scores</button>
+    </div>
+
+    <div id="quiz">
+        <div id="timer">Time left: </div>
+        <div id="questions">
+            <p>Questions Placeholder</p>
+        </div>
+        <button id="a" onclick="checkAnswer('a')">A</button>
+        <button id="b" onclick="checkAnswer('b')">B</button>
+        <button id="c" onclick="checkAnswer('c')">C</button>
+        <button id="d" onclick="checkAnswer('d')">D</button>
+        <div id="result"></div>
+    </div>
+    <div id="gameover">
+
+        <div id="finalScore"></div>
+        <input type="text" size="40" placeholder="Enter you initials for high score" name="intials" id="initials" />
+        <button id="submitScore">Submit Score</button>
+    </div>
+
+    <div id=highscoreContainer>
+        <div id="high-scorePage">
+            <div id="highscore-header">
+                <h3>User Initials</h3>
+                <h3>Score</h3>
+            </div>
+            <div id="highscore-initials"></div>
+            <div id="highscore-score"></div>
         </div>
 
-        <div id="quiz">
-            <div id="timer">Time left: </div>
-            <div id="questions">
-                <p>Questions Placeholder</p>
-            </div>
-            <button id="a" onclick="checkAnswer('a')">A</button>
-            <button id="b" onclick="checkAnswer('b')">B</button>
-            <button id="c" onclick="checkAnswer('c')">C</button>
-            <button id="d" onclick="checkAnswer('d')">D</button>
-            <div id="result"></div>
-        </div>
-        <div id="gameover">
-
-            <div id="finalScore"></div>
-            <input type="text" size="40" placeholder="Enter you initials for high score" name="intials" id="initials" />
-            <button id="submitScore">Submit Score</button>
-        </div>
-
-        <div id=highscoreContainer>
-            <div id="high-scorePage">
-                <div id="highscore-header">
-                    <h3>User Initials</h3>
-                    <h3>Score</h3>
-                </div>
-                <div id="highscore-initials"></div>
-                <div id="highscore-score"></div>
-            </div>
-
-            <div id="endGameBtns">
-                <button id="playAgain" onclick="replayQuiz()">Play Again</button>
-                <button id="clearHighscore" onclick="clearScore()">Clear Highscores</button>
-            </div>
-
-            <!--Shows time
-            <div class="timer">Time: <span id="time">0</span></div>-->
-
-            <div id="score-submission" class="game-box col-lg-8 p-4 d-none">
-                <div class="row pb-4">
-                    <div class="col-lg-4">
-                        <h2 class="code-title">Finished!</h2>
-                        <button class="btn btn-outline-primary">High Score</button>
-                    </div>
-                    <hr>
-                    <div class="col-lg-4">
-
-                    </div>
-
-                    <div class="col-lg-4">
-                        <h4 class="float-right text-primary d-none" id="timecounter">Timer :<span id="timer">75</span>
-                        </h4>
-                        <div id="questions">
-                            <p>Questions Placeholder</p>
-                        </div>
-                        <button id="a" onclick="checkAnswer('A')">A</button>
-                        <button id="b" onclick="checkAnswer('B')">B</button>
-                        <button id="c" onclick="checkAnswer('C')">C</button>
-                        <button id="d" onclick="checkAnswer('D')">D</button>
-                    </div>
-                </div>
-                <div class="quiz-questions d-none" id="quiz-questions">
-                    <div class="answers mt-5 mb-5" id="question-answers">
-                    </div>
-                    <h1 id="alert"></h1>
-
-                </div>
-                <div class="btnstart d-flex  flex-column justify-content-center mt-8 mb-10">
-                </div>
-                <div id="endGameBtns">
-                    <button id="playAgain" onclick="replayQuiz()">Play Again</button>
-                    <button id="clearHighscore" onclick="clearScore()">Clear Highscores</button>
-                </div>
-            </div>
+        <div id="endGameBtns">
+            <button id="playAgain" onclick="replayQuiz()">Play Again</button>
+            <button id="clearHighscore" onclick="clearScore()">Clear Highscores</button>
         </div>
     </div>
-    <script src="assets/sript.js"></script>
-
-
-    <!--View Highscores
-                <div class="scores"><a href="score.html">View Highscores</a></div>-->
+</div>
+<script src="assets/sript.js"></script>
 </body>
 
 </html>
