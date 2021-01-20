@@ -35,7 +35,7 @@ function onStartQuizClick() {
     generateQuizQuestion();
 }
 
-//Quiz Questions
+//Quiz Questions object
 var quizQuestions = [{
     question: "In 1867, what was the cost (per acre) that the United States purchased Alaska for?",
     choiceA: "$1,000",

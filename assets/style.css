@@ -9,8 +9,18 @@ h4 {
 text-align: center;
 }*/
 
+p{
+    color: black;
+    text-shadow: .5px .5px white;
+    text-align: center;
+    font-size: xx-large;
+    font-family: sans-serif;
+
+}
+
 h4 {
     font-size: medium;
+    /*margin-top: -.5rem;*/
 }
 /*#timer{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -116,4 +126,33 @@ button:hover{
 
 #endGameBtns{
     display: none;
+}
+
+input{
+    text-align: center;
+}
+
+#highScore{
+    height: 1.5rem;
+    border: groove 2px;
+}
+
+#high-scorePage{
+    display: none;
+    width: 50%;
+    border: solid;
+    border-color: silver;
+    border-bottom-style: groove;
+    padding-bottom: .3rem;
+    background: lightsteelblue;
+}
+
+#highscore-header{
+    display:flex;
+    justify-content: space-around;
+    border-bottom-style: outset;
+    margin-bottom: .5rem;
+    background-color: #5e6df1;
+    color: #eeeeee;
+    font-family: sans-serif;
 }
