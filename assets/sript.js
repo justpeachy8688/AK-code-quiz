@@ -109,14 +109,19 @@ function generateQuizQuestion() {
 
 startQuizButton.addEventListener("click", startQuiz);
 
-//Timer
-timerInterval = setInterval(function () {
-    timeLeft--;
-    quizTimer.textContent = "Time left: " + timeLeft;
+function startQuiz() {
+    gameoverDiv.style.display = "none";
+    startQuizDiv.style.display = "none";
+    generateQuizQuestion();
 
-    if (timeLeft === 0) {
-        clearInterval(timerInterval);
-        showScore();
-    }
-}, 1000);
-quizBody.style.display = "block";
+    //Timer
+    timerInterval = setInterval(function () {
+        timeLeft--;
+        quizTimer.textContent = "Time left: " + timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            showScore();
+        }
+    }, 1000);
+    quizBody.style.display = "block";
