@@ -156,7 +156,66 @@ function startQuiz() {
             savedHighscores.push(currentHighscore);
             localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
             generateHighscores();
-
         }
-
     });
+
+    function generateHighscores() {
+        highscoreDisplayName.innerHTML = "";
+        highscoreDisplayScore.innerHTML = "";
+        var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+        for (i = 0; i < highscores.length; i++) {
+            var newNameSpan = document.createElement("li");
+            var newScoreSpan = document.createElement("li");
+            newNameSpan.textContent = highscores[i].name;
+            newScoreSpan.textContent = highscores[i].score;
+            highscoreDisplayName.appendChild(newNameSpan);
+            highscoreDisplayScore.appendChild(newScoreSpan);
+        };
+    };
+
+    function showHighscore() {
+        startQuizDiv.style.display = "none"
+        gameoverDiv.style.display = "none";
+        highscoreContainer.style.display = "flex";
+        highscoreDiv.style.display = "block";
+        endGameBtns.style.display = "flex";
+
+        generateHighscores();
+    }
+
+    // This function clears the local storage of the high scores as well as clearing the text from the high score board
+    function clearScore() {
+        window.localStorage.clear();
+        highscoreDisplayName.textContent = "";
+        highscoreDisplayScore.textContent = "";
+    }
+
+    function replayQuiz() {
+        highscoreContainer.style.display = "none";
+        gameoverDiv.style.display = "none";
+        startQuizDiv.style.display = "flex";
+        timeLeft = 76;
+        score = 0;
+        currentQuestionIndex = 0;
+    }
+
+    function checkAnswer(answer) {
+        correct = quizQuestions[currentQuestionIndex].correctAnswer;
+
+        if (answer === correct && currentQuestionIndex !== finalQuestionIndex) {
+            score++;
+            alert("That Is Correct!");
+            currentQuestionIndex++;
+            generateQuizQuestion();
+            //display in the results div that the answer is correct.
+        } else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex) {
+            alert("That Is Incorrect.")
+            currentQuestionIndex++;
+            generateQuizQuestion();
+            //display in the results div that the answer is wrong.
+        } else {
+            showScore();
+        }
+    }
+
+    startQuizButton.addEventListener("click", startQuiz);
