@@ -6,13 +6,27 @@ var timerInterval;
 document.getElementById("start-button").addEventListener("click", onStartQuizClick)
 var questionsEl = document.getElementById("questions");
 var quizBody = document.getElementById("quiz");
+var resultsEl = document.getElementById("result")
+var finalScoreEl = document.getElementById("finalScore")
 var gameoverDiv = document.getElementById("gameover");
+var highscoreContainer = document.getElementById("highscoreContainer");
+var highscoreDiv = document.getElementById("high-scorePage");
+var highscoreInputName = document.getElementById("initials");
+var highscoreDisplayName = document.getElementById("highscore-initials");
+var endGameBtns = document.getElementById("endGameBtns");
+var submitScoreBtn = document.getElementById("submitScore");
+var highscoreDisplayScore = document.getElementById("highscore-score");
 var startQuizDiv = document.getElementById("start-screen");
+var startQuizButton = document.getElementById("start-button");
 var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
-
+var startQuizButton = document.getElementById("startbtn");
+var score = 0;
+var currentQuestionIndex = 0;
+var finalQuestionIndex = quizQuestions.length;
+var correct;
 
 function onStartQuizClick() {
     startScreen.classList.add("d-none")
@@ -80,6 +94,20 @@ var quizQuestions = [{
 },
 ];
 
+function generateQuizQuestion() {
+    gameoverDiv.style.display = "none";
+    if (currentQuestionIndex === finalQuestionIndex) {
+        return showScore();
+    }
+    var currentQuestion = quizQuestions[currentQuestionIndex];
+    questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    buttonA.innerHTML = currentQuestion.choiceA;
+    buttonB.innerHTML = currentQuestion.choiceB;
+    buttonC.innerHTML = currentQuestion.choiceC;
+    buttonD.innerHTML = currentQuestion.choiceD;
+};
+
+startQuizButton.addEventListener("click", startQuiz);
 
 //Timer
 timerInterval = setInterval(function () {
@@ -92,14 +120,3 @@ timerInterval = setInterval(function () {
     }
 }, 1000);
 quizBody.style.display = "block";
-
-//In 1867, what was the cost (per acre) that the United States purchased Alaska for?
-//What is the tallest peak in Alaska?
-//What is Alaska's capitol city that is only accessible by boat or plane?
-//What is Alaska's state bird?
-//What is the state sport of Alaska?
-//Approximately, how many lakes are there in Alaska?
-//The ony battle in WWII to take place on American soil happened on what Alaskan island?
-
-
-//submit button
