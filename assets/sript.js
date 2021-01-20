@@ -222,4 +222,4 @@ function checkAnswer(answer) {
     }
 }
 
-startQuizButton.addEventListener("click", startQuiz();
+startQuizButton.addEventListener("click", startQuiz());
