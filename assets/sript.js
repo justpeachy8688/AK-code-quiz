@@ -220,5 +220,6 @@ function checkAnswer(answer) {
     } else {
         showScore();
     }
+}
 
-    startQuizButton.addEventListener("click", startQuiz();
+startQuizButton.addEventListener("click", startQuiz();
