@@ -71,10 +71,10 @@ button:hover{
 #highscoreContainer{
     height: 100%;
     width: 100%;
-    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 #highscore-initials{
@@ -82,9 +82,11 @@ button:hover{
     padding-left: 9.5rem;
     font-family: sans-serif;
     font-weight: bold;
+    text-align: center;
 }
 
 #highscore-score{
+    display: inline-block;
     float: right;
     padding-right: 8.75rem;
     font-family: sans-serif;
@@ -106,6 +108,10 @@ button:hover{
 #initials{
     margin: .5rem;
     height: 1.75rem;
+    justify-content: space-around;
+    background-color:white;
+    margin-bottom: .5rem;
+    text-align: center;
 }
 
 #finalScore{
@@ -130,14 +136,25 @@ input{
     border-color: silver;
     border-bottom-style: groove;
     padding-bottom: .3rem;
-    background: lightsteelblue;
+    background: rgb(52, 52, 77)
 }
 
 #highscore-header{
     justify-content: space-around;
     border-bottom-style: outset;
     margin-bottom: .5rem;
-    background-color: #5e6df1;
-    color: #eeeeee;
-    font-family: sans-serif;
+    background-color:rgb(52, 52, 77);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: inline-block;
+    text-align: center;
+}
+
+li{
+    padding-bottom: 3px;
+    color: white;
+    text-shadow: 1.5px 1px 3px grey;
+    list-style-type: none;
+    display: inline-block;
+    text-align: center;
 }
