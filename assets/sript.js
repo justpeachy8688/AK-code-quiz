@@ -1,9 +1,7 @@
 var startScreen = document.getElementById("start-screen")
-var scoreSubmission = document.getElementById("score-submission")
 var quizTimer = document.getElementById("timer")
 var timeLeft = 76;
 var timerInterval;
-document.getElementById("start-button").addEventListener("click", onStartQuizClick)
 var questionsEl = document.getElementById("questions");
 var quizBody = document.getElementById("quiz");
 var resultsEl = document.getElementById("result")
@@ -22,18 +20,16 @@ var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
-var startQuizButton = document.getElementById("startbtn");
 var score = 0;
 var currentQuestionIndex = 0;
-var finalQuestionIndex = quizQuestions.length;
 var correct;
 
-function onStartQuizClick() {
-    startScreen.classList.add("d-none")
-    scoreSubmission.classList.remove("d-none")
-    gameoverDiv.style.display = "none";
-    generateQuizQuestion();
-}
+//function onStartQuizClick() {
+//     startScreen.classList.add("d-none")
+//     quizBody.classList.remove("d-none")
+//     // gameoverDiv.style.display = "none";
+//     generateQuizQuestion();
+// }
 
 //Quiz Questions object
 var quizQuestions = [{
@@ -42,7 +38,7 @@ var quizQuestions = [{
     choiceB: "$0.02",
     choiceC: "$350",
     choiceD: "$5",
-    correctAnswer: "B"
+    correctAnswer: "b"
 },
 {
     question: "What is the tallest peak in Alaska?",
@@ -50,7 +46,7 @@ var quizQuestions = [{
     choiceB: "Mount Saint Elias",
     choiceC: "Redoubt",
     choiceD: "Denali",
-    correctAnswer: "D"
+    correctAnswer: "d"
 },
 {
     question: "What is Alaska's capitol city that is only accessible by boat or plane?",
@@ -58,7 +54,7 @@ var quizQuestions = [{
     choiceB: "Anchorage",
     choiceC: "Fairbanks",
     choiceD: "Seward",
-    correctAnswer: "A"
+    correctAnswer: "a"
 },
 {
     question: "What is Alaska's state bird?",
@@ -66,7 +62,7 @@ var quizQuestions = [{
     choiceB: "Ptarmigan",
     choiceC: "Raven",
     choiceD: "Seagull",
-    correctAnswer: "B"
+    correctAnswer: "b"
 },
 {
     question: "What is the state sport of Alaska?",
@@ -74,7 +70,7 @@ var quizQuestions = [{
     choiceB: "Baseball",
     choiceC: "Dog Mushing",
     choiceD: "Bear Wrestling",
-    correctAnswer: "C"
+    correctAnswer: "c"
 },
 {
     question: "Approximately, how many lakes are there in Alaska?",
@@ -82,7 +78,7 @@ var quizQuestions = [{
     choiceB: "26",
     choiceC: "3",
     choiceD: "3,000,000",
-    correctAnswer: "D"
+    correctAnswer: "d"
 },
 {
     question: "The ony battle in WWII to take place on American soil happened on what Alaskan island?",
@@ -90,13 +86,13 @@ var quizQuestions = [{
     choiceB: "Attu",
     choiceC: "Barter",
     choiceD: "Fox Island",
-    correctAnswer: "B"
+    correctAnswer: "b"
 },
 ];
 
 function generateQuizQuestion() {
-    gameoverDiv.style.display = "none";
-    if (currentQuestionIndex === finalQuestionIndex) {
+    // gameoverDiv.style.display = "none";
+    if (currentQuestionIndex === quizQuestions.length) {
         return showScore();
     }
     var currentQuestion = quizQuestions[currentQuestionIndex];
@@ -107,11 +103,10 @@ function generateQuizQuestion() {
     buttonD.innerHTML = currentQuestion.choiceD;
 };
 
-startQuizButton.addEventListener("click", startQuiz);
-
 function startQuiz() {
-    gameoverDiv.style.display = "none";
-    startQuizDiv.style.display = "none";
+    startScreen.classList.add("d-none")
+    quizBody.classList.remove("d-none")
+
     generateQuizQuestion();
 
     //Timer
@@ -128,15 +123,15 @@ function startQuiz() {
 }
 
 function showScore() {
-    quizBody.style.display = "none"
-    gameoverDiv.style.display = "flex";
+    quizBody.classList.add("d-none")
+    gameoverDiv.removeAttribute("class")
     clearInterval(timerInterval);
     highscoreInputName.value = "";
     finalScoreEl.innerHTML = "You got " + score + " out of " + quizQuestions.length + " correct!";
 }
 
 submitScoreBtn.addEventListener("click", function highscore() {
-
+    highscoreContainer.removeAttribute("class")
 
     if (highscoreInputName.value === "") {
         alert("Initials cannot be blank");
@@ -150,10 +145,10 @@ submitScoreBtn.addEventListener("click", function highscore() {
         }
     };
 
-    gameoverDiv.style.display = "none";
-    highscoreContainer.style.display = "flex";
-    highscoreDiv.style.display = "block";
-    endGameBtns.style.display = "flex";
+
+    //highscoreContainer.style.display = "flex";
+    //highscoreDiv.style.display = "block";
+    //endGameBtns.style.display = "flex";
 
     savedHighscores.push(currentHighscore);
     localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
@@ -175,15 +170,15 @@ function generateHighscores() {
     };
 };
 
-function showHighscore() {
-    startQuizDiv.style.display = "none"
-    gameoverDiv.style.display = "none";
-    highscoreContainer.style.display = "flex";
-    highscoreDiv.style.display = "block";
-    endGameBtns.style.display = "flex";
+//function showHighscore() {
+//startQuizDiv.style.display = "none"
+//gameoverDiv.style.display = "none";
+//highscoreContainer.style.display = "flex";
+//highscoreDiv.style.display = "block";
+//endGameBtns.style.display = "flex";
 
-    generateHighscores();
-}
+//generateHighscores();
+//}
 
 // This function clears the local storage of the high scores as well as clearing the text from the high score board
 function clearScore() {
@@ -204,22 +199,25 @@ function replayQuiz() {
 function checkAnswer(answer) {
     correct = quizQuestions[currentQuestionIndex].correctAnswer;
 
-    if (answer === correct && currentQuestionIndex !== finalQuestionIndex) {
+    if (answer === correct) {
         score++;
         alert("That Is Correct!");
-        currentQuestionIndex++;
-        generateQuizQuestion();
 
         //display in the results div that the answer is correct.
-    } else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex) {
+    } else {
         alert("That Is Incorrect.")
-        currentQuestionIndex++;
-        generateQuizQuestion();
 
         //display in the results div that the answer is wrong.
-    } else {
-        showScore();
     }
-}
 
-startQuizButton.addEventListener("click", startQuiz());
+    currentQuestionIndex++;
+    if (currentQuestionIndex === quizQuestions.length) {
+        showScore();
+
+    } else {
+        generateQuizQuestion();
+
+    }
+    console.log(currentQuestionIndex)
+}
+startQuizButton.addEventListener("click", startQuiz);
