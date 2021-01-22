@@ -194,6 +194,7 @@ function replayQuiz() {
     timeLeft = 76;
     score = 0;
     currentQuestionIndex = 0;
+    location.reload();
 }
 
 function checkAnswer(answer) {
