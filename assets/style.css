@@ -141,7 +141,7 @@ input{
     border-bottom-style: groove;
     padding-bottom: 3rem;
     /*background: rgb(52, 52, 77)*/
-    display: flex
+    display: flex;
     flex-wrap: wrap;
     text-align: center;
     margin: auto;
